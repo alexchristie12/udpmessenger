@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.12)
+project(udpmessenger)
+set(CMAKE_CXX_STANDARD 20)
+set(COMPILE_DEFINITIONS -O2 -Wall)
+add_executable(udpmessenger src/main.cpp)
+target_link_libraries(udpmessenger curl)
