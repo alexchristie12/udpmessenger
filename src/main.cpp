@@ -41,6 +41,9 @@ int DecodeMessage(const char *buf, const int bytesRead)
 
     strncpy(message, buf + separator + 1, bytesRead - separator - 1);
     message[bytesRead - separator - 1] = '\0'; // Ensure null termination
+    
+    // Print out the message
+    printf("[%s]> %s\n", username, message);
 
     return 0; // Success
 }
@@ -184,7 +187,6 @@ int main(const int argc, char const *argv[])
             std::getline(std::cin, msg);
             // Now encode the message
             // Testing
-            std::cout << username << " is sending message " << msg << std::endl;
             char *encodedMsg = EncodeMessage(username, msg);
             // Send the message, ensure the correct message length is sent.
             s = sendto(socket_fd, encodedMsg, (username.length() + msg.length() + 1), 0, address->ai_addr,
